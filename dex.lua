@@ -12693,3 +12693,13 @@ getgenv().DexShutdown = function()
         end
     end
 end
+-- DUMMY SCRIPT / UNLOADER DARKDEX
+pcall(function()
+    getgenv().Dex = nil
+    for _, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+        if v.Name:lower():find("dex") or v.Name == "B路x" or v.Name:lower():find("explorer") then
+            v:Destroy()
+        end
+    end
+end)
+print("[MalaikatHub] DarkDex unloaded via dummy script.")
