@@ -14035,3 +14035,13 @@ getgenv().IYShutdown = function()
         end
     end
 end
+-- DUMMY SCRIPT / UNLOADER INFINITE YIELD
+pcall(function()
+    getgenv().IY_LOADED = false
+    for _, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+        if v.Name == "Holder" or v.Name:lower():find("infinite") or v.Name == "IY_GUI" then
+            v:Destroy()
+        end
+    end
+end)
+print("[MalaikatHub] Infinite Yield unloaded via dummy script.")
