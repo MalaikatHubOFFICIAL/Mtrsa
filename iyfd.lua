@@ -14023,3 +14023,15 @@ Updates:Destroy() loadstring(game:HttpGet(('https://raw.githubusercontent.com/in
 else print('Infinite Yield is already running.') end
 --script end
 end
+getgenv().IYShutdown = function()
+    getgenv().IY_LOADED = false
+    for _, gui in pairs({game:GetService("CoreGui"), game:GetService("Players").LocalPlayer:FindFirstChildOfClass("PlayerGui")}) do
+        if gui then
+            for _, child in pairs(gui:GetChildren()) do
+                if child.Name == "Holder" or child.Name:lower():find("infinite") or child.Name == "IY_GUI" then
+                    pcall(function() child:Destroy() end)
+                end
+            end
+        end
+    end
+end
