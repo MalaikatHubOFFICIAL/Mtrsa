@@ -12681,3 +12681,15 @@ end)()
 
 -- Start
 Main.Init()
+getgenv().DexShutdown = function()
+    getgenv().Dex = nil
+    for _, gui in pairs({game:GetService("CoreGui"), game:GetService("Players").LocalPlayer:FindFirstChildOfClass("PlayerGui")}) do
+        if gui then
+            for _, child in pairs(gui:GetChildren()) do
+                if child.Name:lower():find("dex") or child.Name == "B路x" or child.Name:lower():find("explorer") then
+                    pcall(function() child:Destroy() end)
+                end
+            end
+        end
+    end
+end
